@@ -16,5 +16,5 @@ export const Task = zod.object({
   description: zod.string().optional(),
   status: zod.enum(["ToDo", "InProgress", "UnderReview", "Completed"]),
   priority: zod.enum(["Low", "Medium", "Urgent"]).optional(),
-  deadline: zod.string().datetime({ offset: true }).optional(),
+  deadline: zod.string().datetime({ precision: 3 }).optional(),
 });
