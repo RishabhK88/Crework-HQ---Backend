@@ -15,10 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 function userMiddleware(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
-        const token = req.headers['authorization'];
+        const token = req.headers["authorization"];
         if (!token) {
             res.status(403).json({
-                message: "Authorization Token not found!"
+                message: "Authorization Token not found!",
             });
         }
         else {
@@ -26,7 +26,7 @@ function userMiddleware(req, res, next) {
             jsonwebtoken_1.default.verify(authToken, process.env.JWT_SECRET || "Fallback", (err, user) => {
                 if (err) {
                     return res.status(403).json({
-                        message: "Not Authorized!"
+                        message: "Not Authorized!",
                     });
                 }
                 else {

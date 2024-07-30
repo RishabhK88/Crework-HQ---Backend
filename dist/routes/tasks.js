@@ -26,14 +26,14 @@ taskRouter.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     try {
         const tasks = yield prisma.task.findMany({
             where: {
-                userId: userId
-            }
+                userId: userId,
+            },
         });
         res.status(200).json(tasks);
     }
     catch (e) {
         res.status(400).json({
-            message: "Could not retriever user tasks!"
+            message: "Could not retriever user tasks!",
         });
     }
 }));
@@ -44,13 +44,13 @@ taskRouter.get("/:taskId", (req, res) => __awaiter(void 0, void 0, void 0, funct
         const task = yield prisma.task.findFirst({
             where: {
                 id: taskId,
-            }
+            },
         });
         res.status(200).json(task);
     }
     catch (e) {
         res.status(400).json({
-            message: "Could not retriever the task!"
+            message: "Could not retriever the task!",
         });
     }
 }));
@@ -61,7 +61,7 @@ taskRouter.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* (
     const { success } = validation_1.Task.safeParse(taskBody);
     if (!success) {
         res.status(422).json({
-            message: "Invalid Input!"
+            message: "Invalid Input!",
         });
     }
     else {
@@ -73,16 +73,16 @@ taskRouter.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* (
                     status: taskBody.status,
                     priority: taskBody.priority,
                     deadline: taskBody.deadline,
-                    userId: userId
-                }
+                    userId: userId,
+                },
             });
             res.status(200).json({
-                message: `Task: ${task.title} created successfully!`
+                message: `Task: ${task.title} created successfully!`,
             });
         }
         catch (e) {
             res.status(400).json({
-                message: "Error while creating task!"
+                message: "Error while creating task!",
             });
         }
     }
@@ -94,14 +94,14 @@ taskRouter.put("/:taskId", (req, res) => __awaiter(void 0, void 0, void 0, funct
     const { success } = validation_1.Task.safeParse(taskBody);
     if (!success) {
         res.status(422).json({
-            message: "Invalid Input!"
+            message: "Invalid Input!",
         });
     }
     else {
         try {
             const task = yield prisma.task.update({
                 where: {
-                    id: taskId
+                    id: taskId,
                 },
                 data: {
                     title: taskBody.title,
@@ -109,15 +109,15 @@ taskRouter.put("/:taskId", (req, res) => __awaiter(void 0, void 0, void 0, funct
                     status: taskBody.status,
                     priority: taskBody.priority,
                     deadline: taskBody.deadline,
-                }
+                },
             });
             res.status(200).json({
-                message: `Task: ${task.title} updated successfully!`
+                message: `Task: ${task.title} updated successfully!`,
             });
         }
         catch (e) {
             res.status(400).json({
-                message: "Error while updating task!"
+                message: "Error while updating task!",
             });
         }
     }
@@ -129,19 +129,19 @@ taskRouter.put("/updatePriority/:taskId", (req, res) => __awaiter(void 0, void 0
     try {
         const task = yield prisma.task.update({
             where: {
-                id: taskId
+                id: taskId,
             },
             data: {
                 status: taskBody.status,
-            }
+            },
         });
         res.status(200).json({
-            message: `Task: ${task.title} priority updated successfully!`
+            message: `Task: ${task.title} priority updated successfully!`,
         });
     }
     catch (e) {
         res.status(400).json({
-            message: "Error while updating task!"
+            message: "Error while updating task!",
         });
     }
 }));
@@ -152,15 +152,15 @@ taskRouter.delete("/:taskId", (req, res) => __awaiter(void 0, void 0, void 0, fu
         const task = yield prisma.task.delete({
             where: {
                 id: taskId,
-            }
+            },
         });
         res.status(200).json({
-            message: `Task: ${task.title} deleted successfully!`
+            message: `Task: ${task.title} deleted successfully!`,
         });
     }
     catch (e) {
         res.status(400).json({
-            message: "Could not delete the task!"
+            message: "Could not delete the task!",
         });
     }
 }));
