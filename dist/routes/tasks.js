@@ -123,7 +123,7 @@ taskRouter.put("/:taskId", (req, res) => __awaiter(void 0, void 0, void 0, funct
     }
 }));
 // Update Task Priority by ID
-taskRouter.put("/updatePriority/:taskId", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+taskRouter.put("/updateStatus/:taskId", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const taskId = req.params.taskId;
     const taskBody = req.body;
     try {
