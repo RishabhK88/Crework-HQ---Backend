@@ -10,6 +10,12 @@ app.use(cors());
 app.use("/user", userRouter);
 app.use("/task", taskRouter);
 
+app.use("/keepAlive", (req: any, res: any)=>{
+  res.status(200).json({
+    message: "success"
+  })
+})
+
 app.listen(PORT, () => {
   console.log(`App listening on PORT ${PORT}`);
 });
