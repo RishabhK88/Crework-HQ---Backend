@@ -4,6 +4,8 @@
 
 This repository contains the backend code for a web-based task management application similar to Trello, built using Node.js, Express, TypeScript, Prisma, MongoDB, JSON Web Tokens (JWT), and bcrypt.
 
+The above application was built as a part of [Main Repo](https://github.com/RishabhK88/CreworkHQ-Taskboard) for [assignment](https://crework.notion.site/Assignment-Trello-Style-Task-Management-Application-0bcb3b4db4504d6199b803704e561e87) by [Crework](https://www.crework.club/)
+
 ## Features
 
 1. **User Authentication:**
@@ -13,28 +15,28 @@ This repository contains the backend code for a web-based task management applic
 2. **Task Management:**
    * Users can create, read, update, and delete tasks.
    * Each task can have:
-     * A title (mandatory)
-     * A description (optional)
-     * Status (mandatory, automatically filled when created in a specific section)
-     * Priority (optional, with values: Low, Medium, Urgent)
+     * A Title (mandatory)
+     * A Description (optional)
+     * Status (mandatory, automatically filled when created in a specific section) - To Do, In Progress, Under Review, Completed
+     * Priority (optional) - Values: Low, Medium, Urgent
      * Deadline (optional)
    * Tasks can be managed (created, updated, deleted) only by their respective users.
 
 ## Tech Stack
 
-* **Backend:** Node.js with Express
-* **Database:** MongoDB
-* **Validation:** Zod
-* **ORM:** Prisma
-* **Password Hashing:** bcrypt
-* **Session Management:** JSON Web Tokens (JWT)
+* **Backend:** [Node.js](https://nodejs.org/en) with [Express](https://expressjs.com/)
+* **Database:** [MongoDB](https://www.mongodb.com/)
+* **Validation:** [Zod](https://zod.dev/)
+* **ORM:** [Prisma](https://www.prisma.io/)
+* **Password Hashing:** [Bcrypt](https://www.npmjs.com/package/bcrypt)
+* **Session Management:** [JSON Web Tokens (JWT)](https://www.npmjs.com/package/jsonwebtoken)
 
 ## Setup Instructions
 
 ### Prerequisites
 
-* Node.js (v14.x or later)
-* npm (v6.x or later)
+* Node.js
+* npm
 * MongoDB (local or cloud instance)
 
 ### Clone the Repository
@@ -50,6 +52,12 @@ cd <repository-directory>
 npm install
 ```
 
+### Install Typescript (if not already available)
+
+```
+npm install typescript
+```
+
 ### Setup Environment Variables
 
 Create a `.env` file in the root directory and add the following environment variables:
@@ -62,7 +70,6 @@ JWT_SECRET=<your-jwt-secret>
 ### Build the Application
 
 ```
-npm install typescript
 npx tsc -b
 ```
 
@@ -88,30 +95,26 @@ node dist/index.js
 
 ### Tasks
 
-* **GET /tasks**
+* **GET /task**
   * Get all tasks for the logged-in user.
   * Headers: `{ "Authorization": "Bearer <token>" }`
-* **GET /tasks/:taskId**
+* **GET /task/:taskId**
   * Get task by ID.
   * Headers: `{ "Authorization": "Bearer <token>" }`
-* **POST /tasks**
+* **POST /task**
   * Create a new task.
   * Headers: `{ "Authorization": "Bearer <token>" }`
   * Request Body: `{ "title": "Task Title", "description": "Task Description", "status": "ToDo", "priority": "Medium", "deadline": "2024-12-31T23:59:59.999Z" }`
-* **PUT /tasks/:taskId**
+* **PUT /task/:taskId**
   * Update a task by ID.
   * Headers: `{ "Authorization": "Bearer <token>" }`
   * Request Body: `{ "title": "Updated Title", "description": "Updated Description", "status": "InProgress", "priority": "Urgent", "deadline": "2024-12-31T23:59:59.999Z" }`
-* **PUT /tasks/updateStatus/:taskId**
+* **PUT /task/updateStatus/:taskId**
   * Update task status by ID.
   * Headers: `{ "Authorization": "Bearer <token>" }`
   * Request Body: `{ "status": "UnderReview" }`
-* **DELETE /tasks/:taskId**
+* **DELETE /task/:taskId**
   * Delete a task by ID.
   * Headers: `{ "Authorization": "Bearer <token>" }`
-
-## Contact
-
-For any questions or feedback, please reach out to \[rishabhrare8@gmail.com].
 
 ***
