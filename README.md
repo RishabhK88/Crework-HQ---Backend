@@ -42,8 +42,8 @@ The above application was built as a part of [Main Repo](https://github.com/Rish
 ### Clone the Repository
 
 ```
-git clone <repository-url>
-cd <repository-directory>
+git clone https://github.com/RishabhK88/Crework-HQ---Backend.git
+cd Crework-HQ---Backend
 ```
 
 ### Install Dependencies
